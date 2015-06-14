@@ -1,0 +1,9 @@
+%h1.orange Editing category
+
+= render 'form'
+
+= link_to category do
+  %span.col-lg-offset-5 Show
+
+\|
+= link_to 'Back', categories_path, class: 'btn btn-primary'

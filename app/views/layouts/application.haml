@@ -1,0 +1,31 @@
+!!!
+%html{ lang: 'en' }
+  %head
+    %meta{ charset: 'utf-8' }/
+    %meta{ content: 'IE=Edge,chrome=1', 'http-equiv' => 'X-UA-Compatible' }/
+    %meta{ content: 'width=device-width, initial-scale=1.0', name: 'viewport' }/
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  %body
+    %nav.navbar
+      .container-fluid.col-lg-offset-1
+        .navbar-header
+          =link_to root_path, :class => 'navbar-brand' do
+            %span.orange  #{AppConfig.workshops_name}
+        %div.col-lg-3.row.col-lg-offset-6.orange
+          - if current_user
+            =link_to profile_path do
+              %span
+                = "#{current_user.firstname} #{current_user.lastname}"
+                = image_tag current_user.gravatar_url, class: 'small-avatar'
+              = link_to '/users/sign_out', method: :delete do
+                %span Logout
+          - else
+            = link_to 'Sign in', '/users/sign_in', method: :get
+            = link_to 'Sign up', '/users/sign_up', method: :get
+    .container-fluid
+      .row
+        .container
+          = yield

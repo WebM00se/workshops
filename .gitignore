@@ -1,0 +1,31 @@
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+.idea/
+
+/coverage
+
+public/tmp
+public/uploads
+public/javascripts/translations.js
+
+config/mongoid.yml
+config/secrets.yml
+config/database.yml
+
+.rbenv-gemsets
+.rbenv-version
+.powenv
+.env
+.rvmrc
+.powrc
+
+logfile
+
+local.local.*
+
+# Ignore application configuration
+/config/application.yml

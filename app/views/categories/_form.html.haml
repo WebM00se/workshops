@@ -1,0 +1,11 @@
+= form_for category do |f|
+
+  .form-group.col-md-5.col-lg-offset-3.orange
+    = f.label :name
+    = f.text_field :name, class: 'form-control'
+    %ul.text-danger
+      - category.errors[:name].each do |msg|
+        %li= "Name #{msg}"
+  %div.clearfix
+    %br
+    = f.submit 'Save', class: 'btn btn-success col-md-1'

@@ -1,0 +1,22 @@
+= form_for [category, product] do |f|
+
+  .form-group.col-md-6.col-lg-offset-3.orange
+    = f.label :title
+    = f.text_field :title, class: 'form-control'
+    %ul.text-danger
+      - product.errors[:title].each do |msg|
+        %li= "Title #{msg}"
+
+    = f.label :description
+    = f.text_area :description, class: 'form-control'
+    %ul.text-danger
+      - product.errors[:description].each do |msg|
+        %li= "Description #{msg}"
+
+    = f.label :price
+    = f.text_field :price, class: 'form-control'
+    %ul.text-danger
+      - product.errors[:price].each do |msg|
+        %li= "Price #{msg}"
+
+  = f.submit 'Save', class: 'col-md-1 col-lg-offset-5 btn btn-success'

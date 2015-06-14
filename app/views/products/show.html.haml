@@ -1,0 +1,30 @@
+%p.text-success#notice= notice
+%p.text-danger#error= flash[:error]
+
+%p
+  %b Title:
+  = product.title
+%p
+  %b Description:
+  = product.description
+%p
+  %b Price:
+  = product.price
+
+%p
+  %b Category
+  = product.category.name
+
+%h3 Reviews
+%div.col-md-12
+  = render 'reviews/form'
+
+%div.col-md-6.col-lg-offset-3
+  = render reviews
+
+%div.col-md-2.clearfixfix.col-lg-offset-5
+  = link_to category_products_path do
+    %span.btn.btn-primary Back
+  \|
+  = link_to edit_category_product_path(category.id, product.id) do
+    %span.btn.btn-primary Edit

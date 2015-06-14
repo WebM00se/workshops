@@ -1,0 +1,25 @@
+%table.orange.container.col-md-12
+  %tr.col-md-9.col-lg-offset-3
+    %td.col-lg-2= image_tag current_user.gravatar_url
+    %td.col-lg-8.col-lg-offset-2
+      %p
+        = "#{current_user.firstname} #{current_user.lastname}"
+      %p
+        = "#{current_user.email}"
+
+%br
+%h3.orange.col-md-9.col-lg-offset-3 Last activities:
+
+%div.orange.col-md-6.col-lg-offset-3.row
+  -current_user.reviews.order('created_at DESC').limit(5).each do |review|
+    %br
+    %h6 Content:
+    %div.col-md-12
+      = "#{review.content}"
+    %br
+    %span.col-md-2
+      Rating:
+      = "#{review.rating}"
+    %span.col-md-offset-7.col-md-3
+      Date:
+      = "#{review.created_at.strftime('%d-%m-%y')}"
