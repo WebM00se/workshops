@@ -1,22 +1,26 @@
 %p.text-success#notice= notice
 
-%h3.orange= category.name
+%h3
+  = category.name
 
 %h6
   - if category.products.empty?
     = "Category #{category.name} does not contains any products"
-%ul.col-md-3
-  - category.products.each do |product|
-    =link_to category_product_path(category.id, product.id) do
-      %li
-        = product.title
+
 %div.col-md-12
-  %h3.orange.po
+  %ul.col-lg-3
+    - category.products.each do |product|
+      =link_to category_product_path(category.id, product.id) do
+        %li= product.title
+
+%div.col-md-12
+  %h3
     Add new product
   = render 'products/form'
 
+%div
   = link_to edit_category_path(category) do
-    %span Edit
-  \|
+    %span.btn.btn-primary Edit
+
   = link_to categories_path do
     %span.btn.btn-primary Back

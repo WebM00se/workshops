@@ -1,26 +1,31 @@
-%h1.orange Listing categories
+%h1 Listing categories
 %br
-%table.table-hover.table.col-md-6.orange
-  %tr
-    %th Name
-    %th Show
-    %th Edit
-    %th Delete
 
-  - categories.each do |category|
+%div{class: signed_in_admin?(current_user) ? 'col-md-8 col-lg-offset-2' : 'col-md-6 col-lg-offset-3'}
+  %table.table.table-hover
     %tr
-      %td= category.name
-      %td
-        = link_to category do
-          %span.glyphicon.glyphicon-list-alt.orange
-      %td
-        = link_to edit_category_path(category) do
-          %span.glyphicon.glyphicon-edit.orange
-      %td
-        = link_to category, method: :delete, data: { confirm: 'Are you sure?' } do
-          %span.glyphicon.glyphicon-remove.large.orange
+      %th Name
+      %th Show
+      - if signed_in_admin?(current_user)
+        %th Edit
+        %th Delete
+
+    - categories.each do |category|
+      %tr
+        %td= category.name
+        %td
+          = link_to category do
+            %span.glyphicon.glyphicon-list-alt
+        - if signed_in_admin?(current_user)
+          %td
+            = link_to edit_category_path(category) do
+              %span.glyphicon.glyphicon-edit
+          %td
+            = link_to category, method: :delete, data: { confirm: 'Are you sure?' } do
+              %span.glyphicon.glyphicon-remove.large
 
 %br
 
-= link_to new_category_path do
-  %span.btn.btn-success.col-md-offset-5 New Category
+- if signed_in_admin?(current_user)
+  = link_to new_category_path do
+    %span.btn.btn-success.col-md-offset-5 New Category

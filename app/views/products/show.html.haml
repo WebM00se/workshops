@@ -19,12 +19,11 @@
 %div.col-md-12
   = render 'reviews/form'
 
-%div.col-md-6.col-lg-offset-3
   = render reviews
 
-%div.col-md-2.clearfixfix.col-lg-offset-5
+%div.col-md-2
   = link_to category_products_path do
     %span.btn.btn-primary Back
-  \|
+
   = link_to edit_category_product_path(category.id, product.id) do
     %span.btn.btn-primary Edit

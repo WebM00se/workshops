@@ -3,6 +3,7 @@
 = render 'form'
 
 = link_to category_product_path(category, product) do
-  %span.col-lg-offset-5 Show
-\|
-= link_to 'Back', category_path(category)
+  %span.btn.btn-primary Show
+
+= link_to category_path(category) do
+  %span.btn.btn-primary Back

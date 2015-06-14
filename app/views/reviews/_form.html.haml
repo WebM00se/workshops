@@ -1,17 +1,14 @@
 = simple_form_for [category, product, review] do |f|
-  %div
-    .col-md-12
+  .form-group.col-md-7.col-lg-offset-3
+    = f.label :content
+    = f.text_area :content, class: 'form-control'
+    %ul
+      - review.errors[:content].each do |msg|
+        %li= "Content #{msg}"
 
-    .form-group.col-md-7.col-lg-offset-3
-      = f.label :content
-      = f.text_area :content, class: 'form-control'
-      %ul
-        - review.errors[:content].each do |msg|
-          %li= "Content #{msg}"
-
-      = f.input :rating, collection: 1..5, class: 'form-control'
-      %ul
-        - review.errors[:rating].each do |msg|
-          %li= "Rating #{msg}"
-  %div.clearfixfix.col-lg-1.col-lg-offset-6
+    = f.input :rating, collection: 1..5, class: 'form-control'
+    %ul
+      - review.errors[:rating].each do |msg|
+        %li= "Rating #{msg}"
+  %div.col-lg-1.col-lg-offset-6
     = f.submit 'Save', class: 'btn btn-success'
