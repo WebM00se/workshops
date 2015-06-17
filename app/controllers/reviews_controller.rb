@@ -13,7 +13,8 @@ class ReviewsController < ApplicationController
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'
     else
-      render action: 'new'
+      flash[:empty_form] = 'Please fill in the form'
+      redirect_to category_product_path(product.category, product.id)
     end
   end
 

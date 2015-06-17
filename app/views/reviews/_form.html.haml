@@ -10,5 +10,6 @@
     %ul
       - review.errors[:rating].each do |msg|
         %li= "Rating #{msg}"
+    %span.text-danger#error= flash[:empty_form]
   %div.col-lg-1.col-lg-offset-6
     = f.submit 'Save', class: 'btn btn-success'

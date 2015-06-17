@@ -1,6 +1,6 @@
-%h1.orange New product
+%h1.orange Add new product
 
 = render 'form'
 
-= link_to category_products_path do
+= link_to url_for(:back) do
   %span.btn.btn-primary Back

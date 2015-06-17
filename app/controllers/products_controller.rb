@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
   def create
     self.product = Product.new(product_params)
     self.product.user_id = current_user.id
+    self.product.valid?
     if product.save
       category.products << product
       redirect_to category_product_url(category, product), notice: 'Product was successfully created.'

@@ -1,13 +1,14 @@
-%h1.orange Listing products
+%h1 Products
 
-%table.table.table-hover.orange
+%table.table.table-hover
   %tr
     %th Title
     %th Description
     %th Price
     %th Show
-    %th Edit
-    %th Delete
+    - if current_user.admin?
+      %th Edit
+      %th Delete
 
   - products.each do |product|
     %tr
@@ -17,10 +18,11 @@
       %td
         = link_to category_product_path(product.category_id, product.id) do
           %span.glyphicon.glyphicon-list-alt
-      %td
-        = link_to edit_category_product_path(product.category_id, product.id) do
-          %span.glyphicon.glyphicon-edit
-      %td
-        = link_to  category_product_path(product.category_id, product.id), method: :delete, data: { confirm: 'Are you sure?' } do
-          %span.glyphicon.glyphicon-remove.large
+      - if current_user.admin?
+        %td
+          = link_to edit_category_product_path(product.category_id, product.id) do
+            %span.glyphicon.glyphicon-edit
+        %td
+          = link_to  category_product_path(product.category_id, product.id), method: :delete, data: { confirm: 'Are you sure?' } do
+            %span.glyphicon.glyphicon-remove.large
 %br

@@ -19,8 +19,13 @@
   = render 'products/form'
 
 %div
-  = link_to edit_category_path(category) do
-    %span.btn.btn-primary Edit
+  - if current_user.admin?
+    = link_to edit_category_path(category) do
+      %span.btn.btn-primary Edit
 
   = link_to categories_path do
     %span.btn.btn-primary Back
+
+  = link_to category_products_path(category.id) do
+    %span.btn.btn-primary List Products
+
