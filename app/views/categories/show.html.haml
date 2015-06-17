@@ -19,7 +19,7 @@
   = render 'products/form'
 
 %div
-  - if current_user.admin?
+  - if signed_in_admin?(current_user)
     = link_to edit_category_path(category) do
       %span.btn.btn-primary Edit
 

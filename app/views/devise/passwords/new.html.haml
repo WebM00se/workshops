@@ -1,4 +1,5 @@
 %h2 Forgot your password?
+
 %div.col-md-12
   = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
     .col-md-5.col-md-offset-4
@@ -6,5 +7,6 @@
       = f.input :email, required: true, autofocus: true
       %br
       = f.button :submit, 'Send me reset password instructions', class: 'btn btn-success col-md-offset-2'
+
 %div.col-md-3.col-md-offset-4
   = render 'devise/shared/links'

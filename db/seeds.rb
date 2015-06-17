@@ -3,4 +3,11 @@ User.create!([
                  {email: 'testadmin@test.com', password: 'admin1234', password_confirmation: 'admin1234', firstname: 'John', lastname: 'Doe',  admin: true},
                  {email: 'testuser@test.com', password: 'user1234', password_confirmation: 'user1234', firstname: 'Sergio', lastname: 'Ramos', admin: false},
                  {email: 'testuser1@test.com', password: 'user11234', password_confirmation: 'user11234', firstname: 'Mickey', lastname: 'Mouse', admin: false}
-             ])
+])
+
+Category.create!([
+                     {name: 'Food'},
+                     {name: 'Entertainment'},
+                     {name: 'Life'},
+                     {name: 'Work'}
+                 ])
