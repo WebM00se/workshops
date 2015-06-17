@@ -13,7 +13,8 @@ class Product < ActiveRecord::Base
 
   validates :price,
             presence: true,
-            format: {with: DECIMAL_REGEXP}
+            format: {with: DECIMAL_REGEXP},
+            numericality: {greater_than_or_equal_to: 0}
 
   attr_accessor :average_rating
 

@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   def destroy
     product.destroy
-    redirect_to category_products_path(product.category.id), notice: 'Product was successfully destroyed.'
+    redirect_to category_url(product.category.id), notice: 'Product was successfully destroyed.'
   end
 
   private
