@@ -5,21 +5,21 @@
       %p
         = "#{current_user.firstname} #{current_user.lastname}"
       %p
-        = "#{current_user.email}"
+        = current_user.email
 
 %br
 %h3.orange.col-md-9.col-lg-offset-3 Last activities:
 
 %div.orange.col-md-6.col-lg-offset-3.row
-  -current_user.reviews.order('created_at DESC').limit(5).each do |review|
+  - get_recent_activities(current_user).each do |review|
     %br
     %h6 Content:
     %div.col-md-12
-      = "#{review.content}"
+      = review.content
     %br
     %span.col-md-2
       Rating:
-      = "#{review.rating}"
+      = review.rating
     %span.col-md-offset-7.col-md-3
       Date:
-      = "#{review.created_at.strftime('%d-%m-%y')}"
+      = review.created_at.strftime('%d-%m-%y')

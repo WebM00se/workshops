@@ -7,4 +7,8 @@ module UsersHelper
     false
   end
 
+  def get_recent_activities(current_user)
+    current_user.reviews.order('created_at DESC').limit(5)
+  end
+
 end
