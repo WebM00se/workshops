@@ -7,8 +7,16 @@ class ReviewsController < ApplicationController
   end
 
   def create
+
+    unless current_user
+      flash[:info] = 'Please sign in to add new comment'
+      redirect_to :back
+      return
+    end
+
     self.review = Review.new(review_params)
     self.review.user_id = current_user.id
+
     if review.save
       product.reviews << review
       redirect_to category_product_url(product.category, product), notice: 'Review was successfully created.'

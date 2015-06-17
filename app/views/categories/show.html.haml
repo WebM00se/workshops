@@ -21,7 +21,9 @@
 - else
   %div.col-md-12.text-center
     %h3
-      Sign in to add new product
+      =link_to '/users/sign_in', method: :get do
+        %span Sign in
+      %span to add new product
 
 %div
   - if signed_in_admin?(current_user)
